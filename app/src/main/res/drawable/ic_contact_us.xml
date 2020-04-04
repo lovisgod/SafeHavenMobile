@@ -1,0 +1,40 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="29dp"
+    android:height="29dp"
+    android:viewportWidth="29"
+    android:viewportHeight="29">
+  <group>
+    <clip-path
+        android:pathData="M0,0h29v29h-29z"/>
+    <path
+        android:pathData="M3.625,20.5417V8.4583C3.625,5.7891 5.7891,3.625 8.4583,3.625H20.5417C23.2109,3.625 25.375,5.7891 25.375,8.4583V15.7083C25.375,18.3775 23.2109,20.5417 20.5417,20.5417H9.6667"
+        android:strokeLineJoin="round"
+        android:strokeWidth="1.5"
+        android:fillColor="#00000000"
+        android:strokeColor="#B7A6F9"
+        android:strokeLineCap="round"/>
+    <path
+        android:pathData="M3.625,25.375L9.6667,20.5163"
+        android:strokeLineJoin="round"
+        android:strokeWidth="1.5"
+        android:fillColor="#00000000"
+        android:strokeColor="#B7A6F9"
+        android:strokeLineCap="round"/>
+    <path
+        android:pathData="M3.625,20.5163V25.375"
+        android:strokeLineJoin="round"
+        android:strokeWidth="1.5"
+        android:fillColor="#00000000"
+        android:strokeColor="#B7A6F9"
+        android:strokeLineCap="round"/>
+    <path
+        android:pathData="M15.5681,10.7132C16.1579,11.3031 16.1579,12.2594 15.5681,12.8493C14.9782,13.4391 14.0219,13.4391 13.432,12.8493C12.8422,12.2594 12.8422,11.3031 13.432,10.7132C14.0219,10.1234 14.9782,10.1234 15.5681,10.7132Z"
+        android:fillColor="#B7A6F9"/>
+    <path
+        android:pathData="M10.7347,10.7132C11.3245,11.3031 11.3245,12.2594 10.7347,12.8493C10.1448,13.4391 9.1885,13.4391 8.5986,12.8493C8.0088,12.2594 8.0088,11.3031 8.5986,10.7132C9.1885,10.1234 10.1448,10.1234 10.7347,10.7132Z"
+        android:fillColor="#B7A6F9"/>
+    <path
+        android:pathData="M20.4014,10.7132C20.9912,11.3031 20.9912,12.2594 20.4014,12.8493C19.8115,13.4391 18.8552,13.4391 18.2653,12.8493C17.6755,12.2594 17.6755,11.3031 18.2653,10.7132C18.8552,10.1234 19.8115,10.1234 20.4014,10.7132Z"
+        android:fillColor="#B7A6F9"/>
+  </group>
+</vector>

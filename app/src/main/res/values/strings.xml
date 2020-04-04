@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">SafeHaven</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hint_email">example@emal.com</string>
+    <string name="hint_password">your password</string>
+    <string name="login">Login</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="fullname">Full Name</string>
+    <string name="next">NEXT</string>
+    <string name="phone">09000000000</string>
+    <string name="create_account">Create Account</string>
+    <string name="dont_have_account">Dont\'have account?</string>
+    <string name="remember_pass">Remember Me</string>
+    <string name="resend">Resend</string>
+    <string name="dont_recieve_code">Don\'t recieve code?</string>
+</resources>
