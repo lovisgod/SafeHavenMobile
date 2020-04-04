@@ -38,8 +38,9 @@ class LoginFragment : Fragment() {
         binding.viewmodel = viewModel
         binding.lifecycleOwner = this
 
+        binding.loginBtn.setOnClickListener {
 
-
+        }
         return binding.root
     }
 
