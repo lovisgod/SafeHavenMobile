@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <!--        <variable-->
+        <!--            name="viewmodel"-->
+        <!--            type="com.lovisgod.safehaven.ViewModels.AppViewModel"/>-->
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".Fragment.LandingFragment">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_picture"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/ic_launcher_background"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="@dimen/fifty_dp"
+            android:layout_marginStart="50dp">
+
+        </de.hdodenhof.circleimageview.CircleImageView>
+
+        <TextView
+            android:id="@+id/profile_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toRightOf="@+id/profile_picture"
+            app:layout_constraintTop_toTopOf="@+id/profile_picture"
+
+            android:layout_marginLeft="10dp"
+            android:text="Adebanjo Samuel"
+            android:textSize="15sp">
+        </TextView>
+
+        <TextView
+            android:id="@+id/profile_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="@+id/profile_name"
+            app:layout_constraintTop_toBottomOf="@+id/profile_name"
+            android:text="08165656798"
+            android:textColor="@color/colorPrimary"
+            android:textSize="15sp">
+        </TextView>
+
+        <TextView
+            android:id="@+id/profile_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="@+id/profile_phone"
+            app:layout_constraintTop_toBottomOf="@+id/profile_phone"
+            android:text="olifed8989@gmail.com"
+            android:textSize="15sp">
+        </TextView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/hospital_card"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/profile_email"
+            android:layout_marginTop="70dp"
+            android:layout_marginLeft="@dimen/twenty_dp">
+
+            <TextView
+                android:id="@+id/hospital_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:drawableTop="@drawable/ic_hospitals_blue"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:text="Hospital">
+            </TextView>
+
+        </androidx.cardview.widget.CardView>
+
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/fire_station_card"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/hospital_card"
+            android:layout_marginRight="@dimen/twenty_dp">
+
+            <TextView
+                android:id="@+id/fire_statio_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:drawableTop="@drawable/ic_fire_blue"
+                android:text="Fire Station"
+                android:textSize="20sp"
+                android:textStyle="bold">
+            </TextView>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/directory_card"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            app:layout_constraintLeft_toLeftOf="@id/hospital_card"
+            app:layout_constraintLeft_toRightOf="@id/hospital_card"
+            app:layout_constraintTop_toBottomOf="@id/hospital_card"
+            android:layout_marginTop="@dimen/fifty_dp">
+
+
+            <TextView
+                android:id="@+id/directory_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Directories"
+                android:layout_gravity="center"
+                android:drawableTop="@drawable/ic_directories"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                >
+            </TextView>
+
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/safety_tips_card"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_marginTop="@dimen/fifty_dp"
+            app:layout_constraintLeft_toLeftOf="@id/fire_station_card"
+            app:layout_constraintTop_toBottomOf="@id/hospital_card">
+
+            <TextView
+                android:id="@+id/safety_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Safety Tips"
+                android:layout_gravity="center"
+                android:drawableTop="@drawable/ic_safety_tips"
+                android:textSize="20sp"
+                android:textStyle="bold">
+            </TextView>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/bottom_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="120dp">
+
+                <TextView
+                    android:id="@+id/contact_us"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Contact Us"
+                    android:layout_gravity="center"
+                    android:drawableTop="@drawable/ic_contact_us"
+                    android:textColor="@color/colorPrimary"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginBottom="@dimen/margin"
+                    android:textSize="20sp"
+                    android:textStyle="bold">
+                </TextView>
+
+                <TextView
+                    android:id="@+id/safe_friends"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Safe Friends"
+                    android:layout_gravity="center"
+                    android:drawableTop="@drawable/ic_safe_friends"
+                    android:textColor="@color/colorPrimary"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginRight="40dp"
+                    android:layout_marginBottom="@dimen/margin"
+                    android:textSize="20sp"
+                    android:textStyle="bold">
+                </TextView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/sos_click"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="@id/bottom_layout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="100dp"
+            android:elevation="5dp"
+            android:text="SOS"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:textColor="#ffffff"
+            android:background="@drawable/sos_bg">
+        </TextView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

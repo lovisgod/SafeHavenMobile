@@ -16,4 +16,6 @@
     <string name="remember_pass">Remember Me</string>
     <string name="resend">Resend</string>
     <string name="dont_recieve_code">Don\'t recieve code?</string>
+    <string name="nav_header_title">User Name</string>
+    <string name="nav_header_subtitle">email@email.com</string>
 </resources>

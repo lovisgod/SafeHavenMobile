@@ -41,7 +41,7 @@ class FullnameFragment : Fragment() {
         binding.lifecycleOwner = this
 
         binding.loginBtn.setOnClickListener {
-
+            navController.navigate(R.id.action_fullnameFragment_to_phoneFragment)
         }
 
         return binding.root

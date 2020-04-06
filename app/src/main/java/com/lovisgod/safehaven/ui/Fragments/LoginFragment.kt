@@ -1,5 +1,6 @@
 package com.lovisgod.safehaven.ui.Fragments
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -13,6 +14,7 @@ import androidx.navigation.Navigation
 import com.lovisgod.safehaven.R
 import com.lovisgod.safehaven.viewModel.AuthViewModel
 import com.lovisgod.safehaven.databinding.FragmentLoginBinding
+import com.lovisgod.safehaven.ui.Activity.SafeActivity
 
 /**
  * A simple [Fragment] subclass.
@@ -39,7 +41,11 @@ class LoginFragment : Fragment() {
         binding.lifecycleOwner = this
 
         binding.loginBtn.setOnClickListener {
+            startActivity(Intent(this.requireActivity(), SafeActivity::class.java))
+        }
 
+        binding.signup.setOnClickListener {
+            navController.navigate(R.id.action_loginFragment_to_fullnameFragment)
         }
         return binding.root
     }

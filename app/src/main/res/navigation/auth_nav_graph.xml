@@ -10,6 +10,52 @@
         android:id="@+id/loginFragment"
         android:name="com.lovisgod.safehaven.ui.Fragments.LoginFragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login" />
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_fullnameFragment"
+            app:destination="@id/fullnameFragment"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/fullnameFragment"
+        android:name="com.lovisgod.safehaven.ui.Fragments.FullnameFragment"
+        android:label="FullnameFragment" >
+        <action
+            android:id="@+id/action_fullnameFragment_to_phoneFragment"
+            app:destination="@id/phoneFragment"
+            app:popEnterAnim="@anim/nav_default_enter_anim"
+            app:popExitAnim="@anim/nav_default_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/passwordFragment"
+        android:name="com.lovisgod.safehaven.ui.Fragments.PasswordFragment"
+        android:label="PasswordFragment" >
+        <action
+            android:id="@+id/action_passwordFragment_to_verifyFragment"
+            app:destination="@id/verifyFragment"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/phoneFragment"
+        android:name="com.lovisgod.safehaven.ui.Fragments.PhoneFragment"
+        android:label="PhoneFragment" >
+        <action
+            android:id="@+id/action_phoneFragment_to_passwordFragment"
+            app:destination="@id/passwordFragment"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/verifyFragment"
+        android:name="com.lovisgod.safehaven.ui.Fragments.VerifyFragment"
+        android:label="VerifyFragment" >
+        <action
+            android:id="@+id/action_verifyFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
 
 </navigation>

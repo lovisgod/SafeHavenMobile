@@ -41,7 +41,7 @@ class VerifyFragment : Fragment() {
         binding.lifecycleOwner = this
 
         binding.loginBtn.setOnClickListener {
-
+          navController.navigate(R.id.action_verifyFragment_to_loginFragment)
         }
 
         return binding.root    }

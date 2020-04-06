@@ -41,7 +41,7 @@ class PhoneFragment : Fragment() {
         binding.lifecycleOwner = this
 
         binding.loginBtn.setOnClickListener {
-
+            navController.navigate(R.id.action_phoneFragment_to_passwordFragment)
         }
 
         return binding.root
