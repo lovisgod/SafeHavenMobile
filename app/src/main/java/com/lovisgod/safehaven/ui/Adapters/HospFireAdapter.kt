@@ -1,16 +1,20 @@
 package com.lovisgod.safehaven.ui.Adapters
 
+import android.os.Build
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import com.lovisgod.safehaven.R
+import com.lovisgod.safehaven.Util.Dialog
 import com.lovisgod.safehaven.databinding.ContactItemBinding
 import com.lovisgod.safehaven.model.Contact
 
 class HospFireAdapter: RecyclerView.Adapter<HospFireAdapter.Viewholder>() {
     private var contactList: ArrayList<Contact> = ArrayList()
+    val dialog  = Dialog()
 
     class Viewholder(itemView: ContactItemBinding): RecyclerView.ViewHolder(itemView.root) {
         val name = itemView.contactTitle
@@ -33,13 +37,15 @@ class HospFireAdapter: RecyclerView.Adapter<HospFireAdapter.Viewholder>() {
         return 0
     }
 
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onBindViewHolder(holder: HospFireAdapter.Viewholder, position: Int) {
       val contact = contactList.get(position)
         holder.name.text = contact.name
         holder.address.text = contact.address
         holder.phone_number.text = contact.phone_number
         holder.more_info.setOnClickListener {
-            Snackbar.make(holder.layout, "more info clicked", Snackbar.LENGTH_LONG).show()
+//            Snackbar.make(holder.layout, "more info clicked", Snackbar.LENGTH_LONG).show()
+            dialog.displayContactDialog(holder.more_info.context, contact.name, contact.address, contact.phone_number)?.show()
         }
     }
 

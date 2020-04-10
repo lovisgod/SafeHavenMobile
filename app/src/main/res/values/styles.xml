@@ -42,4 +42,15 @@
 
     </style>
 
+    <style name="call_now_text">
+
+        <item name="android:textSize">
+            18sp
+        </item>
+        <item name="android:textColor">
+            @color/colorWhite
+        </item>
+
+    </style>
+
 </resources>
