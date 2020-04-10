@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.lovisgod.safehaven.viewModel.AppViewModel"/>
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/contact"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/contact_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="30dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="@dimen/twenty_dp"
+        android:layout_marginStart="@dimen/twenty_dp"
+        android:textSize="16sp"
+        android:textColor="#000000"
+        android:text="Sample Title">
+    </com.google.android.material.textview.MaterialTextView>
+
+    <ImageView
+        android:id="@+id/call_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@+id/contact_title"
+        app:layout_constraintBottom_toBottomOf="@+id/contact_title"
+        android:layout_marginRight="@dimen/twenty_dp"
+        android:layout_marginEnd="@dimen/twenty_dp"
+        android:src="@drawable/ic_call"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+    </ImageView>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/contact_title"
+        android:layout_marginTop="5dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="@dimen/twenty_dp"
+        android:layout_marginStart="@dimen/twenty_dp"
+        android:textSize="16sp"
+        style="@style/lawal_st_ne"
+        android:text="@string/lawal_st_ne">
+    </com.google.android.material.textview.MaterialTextView>
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/open_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/address"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="@dimen/twenty_dp"
+        android:layout_marginStart="@dimen/twenty_dp"
+        android:src="@drawable/ic_open">
+    </com.google.android.material.imageview.ShapeableImageView>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@+id/open_button"
+        app:layout_constraintBottom_toBottomOf="@+id/open_button"
+        android:layout_marginTop="5dp"
+        app:layout_constraintLeft_toRightOf="@id/open_button"
+        android:layout_marginLeft="@dimen/twenty_dp"
+        android:layout_marginStart="@dimen/twenty_dp"
+        android:textSize="16sp"
+        style="@style/lawal_st_ne"
+        android:text="@string/number_smaple">
+    </com.google.android.material.textview.MaterialTextView>
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/more_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@+id/open_button"
+        app:layout_constraintBottom_toBottomOf="@+id/open_button"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="@dimen/twenty_dp"
+        android:layout_marginEnd="@dimen/twenty_dp"
+        android:src="@drawable/ic_more_info">
+    </com.google.android.material.imageview.ShapeableImageView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

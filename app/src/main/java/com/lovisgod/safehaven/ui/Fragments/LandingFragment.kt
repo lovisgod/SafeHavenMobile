@@ -12,10 +12,7 @@ import androidx.navigation.Navigation
 
 import com.lovisgod.safehaven.R
 import com.lovisgod.safehaven.databinding.FragmentLandingBinding
-import com.lovisgod.safehaven.databinding.FragmentVerifyBinding
-import com.lovisgod.safehaven.model.ToContact
 import com.lovisgod.safehaven.viewModel.AppViewModel
-import com.lovisgod.safehaven.viewModel.AuthViewModel
 
 /**
  * A simple [Fragment] subclass.

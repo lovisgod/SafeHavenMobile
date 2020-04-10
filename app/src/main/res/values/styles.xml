@@ -30,4 +30,16 @@
 
     </style>
 
+    <style name="lawal_st_ne">
+
+        <item name="android:textSize">
+            12sp
+        </item>
+
+        <item name="android:textColor">
+            #A5A5A5
+        </item>
+
+    </style>
+
 </resources>
