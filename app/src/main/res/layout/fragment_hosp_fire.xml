@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.lovisgod.safehaven.viewModel.AppViewModel"/>
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".Fragment.ContactFragment">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/for_em_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="100dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginLeft="@dimen/twenty_dp"
+            android:layout_marginStart="@dimen/twenty_dp"
+            style="@style/for_emergencies"
+            android:text="@string/for_emergencies">
+        </com.google.android.material.textview.MaterialTextView>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/for_em_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/for_em_label"
+            android:layout_marginTop="30dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginLeft="@dimen/twenty_dp"
+            android:layout_marginStart="@dimen/twenty_dp"
+            android:textSize="16sp"
+            android:text="">
+        </com.google.android.material.textview.MaterialTextView>
+
+        <ImageView
+            android:id="@+id/call_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@+id/for_em_value"
+            app:layout_constraintBottom_toBottomOf="@+id/for_em_value"
+            android:layout_marginRight="@dimen/twenty_dp"
+            android:layout_marginEnd="@dimen/twenty_dp"
+            android:src="@drawable/ic_call"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintRight_toRightOf="parent">
+        </ImageView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

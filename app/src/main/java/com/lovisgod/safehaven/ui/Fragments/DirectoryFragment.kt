@@ -11,17 +11,15 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 
 import com.lovisgod.safehaven.R
-import com.lovisgod.safehaven.databinding.FragmentLandingBinding
-import com.lovisgod.safehaven.databinding.FragmentVerifyBinding
-import com.lovisgod.safehaven.model.ToContact
+import com.lovisgod.safehaven.databinding.FragmentDirectoryBinding
+import com.lovisgod.safehaven.databinding.FragmentHospFireBinding
 import com.lovisgod.safehaven.viewModel.AppViewModel
-import com.lovisgod.safehaven.viewModel.AuthViewModel
 
 /**
  * A simple [Fragment] subclass.
  */
-class LandingFragment : Fragment() {
-    private lateinit var binding: FragmentLandingBinding
+class DirectoryFragment : Fragment() {
+    private lateinit var binding: FragmentDirectoryBinding
     private lateinit var navController: NavController
     private val viewModel: AppViewModel by lazy {
         val activity = requireNotNull(this.activity) {
@@ -37,19 +35,10 @@ class LandingFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         navController = Navigation.findNavController(this.requireActivity(), R.id.app_nav_host_fragment)
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_landing, container, false)
-        binding.lifecycleOwner = this
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_directory, container, false)
         binding.viewmodel = viewModel
+        binding.lifecycleOwner = this
 
-        var bundle = Bundle()
-        binding.hospitalCard.setOnClickListener {
-          bundle.putString("to_contact", "Ambulance")
-          navController.navigate(R.id.action_landingFragment_to_contactFragment, bundle)
-        }
-        binding.fireStationCard.setOnClickListener {
-            bundle.putString("to_contact", "Fire Service")
-            navController.navigate(R.id.action_landingFragment_to_contactFragment, bundle)
-        }
         return binding.root
     }
 

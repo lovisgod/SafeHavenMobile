@@ -8,7 +8,7 @@
     android:layout_width="match_parent"
     android:id="@+id/drawer_layout"
     android:layout_height="match_parent"
-    tools:context=".ui.Activity.SafeActivity">
+    tools:context=".ui.Activity.LandingActivity">
 
     <include
         layout="@layout/app_bar_main"
@@ -43,15 +43,3 @@
     </com.google.android.material.navigation.NavigationView>
 
 </androidx.drawerlayout.widget.DrawerLayout>
-<!--<androidx.constraintlayout.widget.ConstraintLayout-->
-<!--    xmlns:android="http://schemas.android.com/apk/res/android"-->
-<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
-<!--    xmlns:tools="http://schemas.android.com/tools"-->
-<!--    android:layout_width="match_parent"-->
-<!--    android:layout_height="match_parent"-->
-<!--    tools:context=".ui.Activity.SafeActivity">-->
-
-
-<!--  -->
-
-<!--</androidx.constraintlayout.widget.ConstraintLayout>-->

@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             if (!isExpired){
-                startActivity(Intent(this, SafeActivity::class.java))
+                startActivity(Intent(this, LandingActivity::class.java))
                 finish()
             }
         } else {

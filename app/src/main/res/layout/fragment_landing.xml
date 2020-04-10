@@ -4,9 +4,9 @@
 
     <data>
 
-        <!--        <variable-->
-        <!--            name="viewmodel"-->
-        <!--            type="com.lovisgod.safehaven.ViewModels.AppViewModel"/>-->
+                <variable
+                    name="viewmodel"
+                    type="com.lovisgod.safehaven.viewModel.AppViewModel"/>
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:tools="http://schemas.android.com/tools"
@@ -33,7 +33,6 @@
             android:layout_height="wrap_content"
             app:layout_constraintLeft_toRightOf="@+id/profile_picture"
             app:layout_constraintTop_toTopOf="@+id/profile_picture"
-
             android:layout_marginLeft="10dp"
             android:text="Adebanjo Samuel"
             android:textSize="15sp">
