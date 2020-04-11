@@ -1,7 +1,8 @@
 package com.lovisgod.safehaven.ui.Activity
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.Gravity
 import android.view.MenuItem
@@ -9,7 +10,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-import android.widget.Toolbar
+import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
@@ -19,6 +20,7 @@ import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.navigation.NavigationView
 import com.lovisgod.safehaven.R
 import com.pixplicity.easyprefs.library.Prefs
+
 
 class LandingActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     private lateinit var navController: NavController
@@ -40,7 +42,17 @@ class LandingActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
         navigationView.setNavigationItemSelectedListener(this)
         NavigationUI.setupWithNavController(toolbar, navController)
 
+//       // change app bar color
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//            AppCompatActivity.window.statusBarColor =
+//                ContextCompat.getColor(this, R.color.colorWhite)
+//        }
+        val colorDrawable = ColorDrawable(Color.parseColor("#FFFFFF"))
 
+        // Set BackgroundDrawable
+
+        // Set BackgroundDrawable
+        appBarLayout.setBackgroundDrawable(colorDrawable)
 
         var menuIcon = findViewById<ImageView>(R.id.menu_icon)
         menuIcon.setOnClickListener {
