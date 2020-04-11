@@ -13,6 +13,7 @@ import androidx.navigation.Navigation
 import com.lovisgod.safehaven.R
 import com.lovisgod.safehaven.databinding.FragmentDirectoryBinding
 import com.lovisgod.safehaven.databinding.FragmentHospFireBinding
+import com.lovisgod.safehaven.ui.Adapters.DirectoryCategoryListAdapter
 import com.lovisgod.safehaven.viewModel.AppViewModel
 
 /**
@@ -38,7 +39,7 @@ class DirectoryFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_directory, container, false)
         binding.viewmodel = viewModel
         binding.lifecycleOwner = this
-
+        binding.directoryCategories.adapter = DirectoryCategoryListAdapter(this.requireContext())
         return binding.root
     }
 

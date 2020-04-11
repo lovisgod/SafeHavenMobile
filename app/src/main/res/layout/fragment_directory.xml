@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
         <variable
@@ -12,7 +12,64 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/directory_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:padding="@dimen/dimen_8">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/sega_link"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="70dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginLeft="@dimen/twenty_dp"
+            android:layout_marginStart="@dimen/twenty_dp"
+            android:textSize="16sp"
+            android:textColor="#000000"
+            android:text="@string/sega_link">
+        </com.google.android.material.textview.MaterialTextView>
+
+        <ImageView
+            android:id="@+id/call_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@+id/sega_link"
+            app:layout_constraintBottom_toBottomOf="@+id/number"
+            android:layout_marginRight="@dimen/twenty_dp"
+            android:layout_marginEnd="@dimen/twenty_dp"
+            android:src="@drawable/ic_call"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintRight_toRightOf="parent">
+        </ImageView>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/sega_link"
+            android:layout_marginTop="5dp"
+            app:layout_constraintLeft_toLeftOf="@+id/sega_link"
+            android:textSize="16sp"
+            style="@style/lawal_st_ne"
+            android:text="@string/number_smaple">
+        </com.google.android.material.textview.MaterialTextView>
+
+        <View
+            android:id="@+id/line_1"
+            android:layout_width="match_parent"
+            app:layout_constraintTop_toBottomOf="@id/number"
+            android:background="#90000000"
+            android:layout_marginTop="5dp"
+            android:layout_height="1dp">
+        </View>
+        <ListView
+            android:id="@+id/directory_categories"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/line_1"
+            android:layout_marginTop="@dimen/title_margin"
+            tools:listitem="@layout/directory_category_item">
+        </ListView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

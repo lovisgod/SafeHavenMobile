@@ -47,6 +47,10 @@ class LandingFragment : Fragment() {
             bundle.putString("to_contact", "Fire Service")
             navController.navigate(R.id.action_landingFragment_to_contactFragment, bundle)
         }
+
+        binding.directoryCard.setOnClickListener {
+            navController.navigate(R.id.action_landingFragment_to_directoryFragment)
+        }
         return binding.root
     }
 
