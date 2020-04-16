@@ -1,4 +1,4 @@
-package com.lovisgod.safehaven.viewModel
+package com.lovisgod.safehaven.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.ViewModel

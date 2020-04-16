@@ -12,18 +12,19 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.lovisgod.safehaven.R
-import com.lovisgod.safehaven.databinding.FragmentHospFireBinding
+import com.lovisgod.safehaven.databinding.FragmentDirectoryListBinding
 import com.lovisgod.safehaven.model.Contact
+import com.lovisgod.safehaven.ui.Adapters.DirectoryListAdapter
 import com.lovisgod.safehaven.ui.Adapters.HospFireAdapter
 import com.lovisgod.safehaven.viewmodel.AppViewModel
 
 /**
  * A simple [Fragment] subclass.
  */
-class HospFireFragment : Fragment() {
-    private lateinit var binding: FragmentHospFireBinding
+class DirectoryListFragment : Fragment() {
+    private lateinit var binding : FragmentDirectoryListBinding
     private lateinit var navController: NavController
-    private var adapter = HospFireAdapter()
+    private var adapter = DirectoryListAdapter()
 
     // this is contact list that will be removed later
     private var sampleContactList: ArrayList<Contact> = ArrayList()
@@ -39,17 +40,15 @@ class HospFireFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val arguements = arguments
         // Inflate the layout for this fragment
         navController = Navigation.findNavController(this.requireActivity(), R.id.app_nav_host_fragment)
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_hosp_fire, container, false)
+        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_directory_list,container, false)
         binding.lifecycleOwner = this
         binding.viewmodel = viewModel
-        binding.contactList.layoutManager = LinearLayoutManager(this.requireContext(), LinearLayoutManager.VERTICAL,false)
+
+        binding.contactList.layoutManager = LinearLayoutManager(
+            this.requireContext(), LinearLayoutManager.VERTICAL, false)
         binding.contactList.adapter = adapter
-        if (arguements?.getString("to_contact", "") != null) {
-            binding.forEmValue.text = arguements.getString("to_contact", "")
-        }
 
 
         // create sample contact items
@@ -65,9 +64,18 @@ class HospFireFragment : Fragment() {
             address = resources.getString(R.string.lawal_st_ne),
             status = "open"
         )
+
+        val contact3 = Contact(
+            name = "Adega Hospital",
+            phone_number = "09098765433",
+            address = resources.getString(R.string.lawal_st_ne),
+            status = "open"
+        )
         sampleContactList.add(contact1)
         sampleContactList.add(contact2)
+        sampleContactList.add(contact3)
         adapter.setAdvertList(sampleContactList)
+
         return binding.root
     }
 

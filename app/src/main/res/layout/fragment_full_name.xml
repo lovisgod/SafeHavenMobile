@@ -9,7 +9,7 @@
 
         <variable
             name="viewmodel"
-            type="com.lovisgod.safehaven.viewModel.AuthViewModel" />
+            type="com.lovisgod.safehaven.viewmodel.AuthViewModel" />
     </data>
 
 <androidx.constraintlayout.widget.ConstraintLayout

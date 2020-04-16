@@ -24,6 +24,15 @@
         tools:layout="@layout/fragment_hosp_fire" />
     <fragment
         android:id="@+id/directoryFragment"
-        android:name="com.lovisgod.safehaven.ui.Fragments.DirectoryFragment"
-        android:label="DirectoryFragment" />
+        android:name="com.lovisgod.safehaven.ui.Fragments.DirectoryCategoryFragment"
+        android:label="DirectoryFragment" >
+        <action
+            android:id="@+id/action_directoryFragment_to_directoryListFragment"
+            app:destination="@id/directoryListFragment"
+            app:popUpTo="@id/directoryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/directoryListFragment"
+        android:name="com.lovisgod.safehaven.ui.Fragments.DirectoryListFragment"
+        android:label="DirectoryListFragment" />
 </navigation>

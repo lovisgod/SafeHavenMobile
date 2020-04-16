@@ -12,7 +12,7 @@ import com.lovisgod.safehaven.Util.Dialog
 import com.lovisgod.safehaven.databinding.ContactItemBinding
 import com.lovisgod.safehaven.model.Contact
 
-class HospFireAdapter: RecyclerView.Adapter<HospFireAdapter.Viewholder>() {
+class DirectoryListAdapter: RecyclerView.Adapter<DirectoryListAdapter.Viewholder>() {
     private var contactList: ArrayList<Contact> = ArrayList()
     val dialog  = Dialog()
 
@@ -25,7 +25,7 @@ class HospFireAdapter: RecyclerView.Adapter<HospFireAdapter.Viewholder>() {
         val call_button = itemView.callButton
         val layout = itemView.contact
     }
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HospFireAdapter.Viewholder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DirectoryListAdapter.Viewholder {
         val itemView: ContactItemBinding = DataBindingUtil.inflate(
             LayoutInflater.from(parent.context), R.layout.contact_item, parent, false)
         return Viewholder(itemView)
@@ -39,13 +39,15 @@ class HospFireAdapter: RecyclerView.Adapter<HospFireAdapter.Viewholder>() {
     }
 
     @RequiresApi(Build.VERSION_CODES.M)
-    override fun onBindViewHolder(holder: HospFireAdapter.Viewholder, position: Int) {
-      val contact = contactList.get(position)
+    override fun onBindViewHolder(holder: DirectoryListAdapter.Viewholder, position: Int) {
+        val contact = contactList.get(position)
         holder.name.text = contact.name
         holder.address.text = contact.address
         holder.phone_number.text = contact.phone_number
         holder.more_info.setOnClickListener {
-//            Snackbar.make(holder.layout, "more info clicked", Snackbar.LENGTH_LONG).show()
+            Snackbar.make(holder.itemView, "${holder.name.text} clicked", Snackbar.LENGTH_LONG)
+                .setBackgroundTint(holder.name.context.getColor(R.color.colorAccent))
+                .show()
             dialog.displayContactDialog(holder.more_info.context, contact.name, contact.address, contact.phone_number)?.show()
         }
     }

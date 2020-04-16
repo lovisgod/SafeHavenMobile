@@ -11,16 +11,15 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 
 import com.lovisgod.safehaven.R
-import com.lovisgod.safehaven.databinding.FragmentDirectoryBinding
-import com.lovisgod.safehaven.databinding.FragmentHospFireBinding
+import com.lovisgod.safehaven.databinding.FragmentDirectoryCategoryBinding
 import com.lovisgod.safehaven.ui.Adapters.DirectoryCategoryListAdapter
-import com.lovisgod.safehaven.viewModel.AppViewModel
+import com.lovisgod.safehaven.viewmodel.AppViewModel
 
 /**
  * A simple [Fragment] subclass.
  */
-class DirectoryFragment : Fragment() {
-    private lateinit var binding: FragmentDirectoryBinding
+class DirectoryCategoryFragment : Fragment() {
+    private lateinit var binding: FragmentDirectoryCategoryBinding
     private lateinit var navController: NavController
     private val viewModel: AppViewModel by lazy {
         val activity = requireNotNull(this.activity) {
@@ -36,7 +35,7 @@ class DirectoryFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         navController = Navigation.findNavController(this.requireActivity(), R.id.app_nav_host_fragment)
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_directory, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_directory_category, container, false)
         binding.viewmodel = viewModel
         binding.lifecycleOwner = this
         binding.directoryCategories.adapter = DirectoryCategoryListAdapter(this.requireContext())

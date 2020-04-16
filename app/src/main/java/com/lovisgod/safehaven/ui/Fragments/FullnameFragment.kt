@@ -12,8 +12,7 @@ import androidx.navigation.Navigation
 
 import com.lovisgod.safehaven.R
 import com.lovisgod.safehaven.databinding.FragmentFullNameBinding
-import com.lovisgod.safehaven.databinding.FragmentLoginBinding
-import com.lovisgod.safehaven.viewModel.AuthViewModel
+import com.lovisgod.safehaven.viewmodel.AuthViewModel
 
 /**
  * A simple [Fragment] subclass.

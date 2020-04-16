@@ -12,7 +12,7 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 
 import com.lovisgod.safehaven.R
-import com.lovisgod.safehaven.viewModel.AuthViewModel
+import com.lovisgod.safehaven.viewmodel.AuthViewModel
 import com.lovisgod.safehaven.databinding.FragmentLoginBinding
 import com.lovisgod.safehaven.ui.Activity.LandingActivity
 
