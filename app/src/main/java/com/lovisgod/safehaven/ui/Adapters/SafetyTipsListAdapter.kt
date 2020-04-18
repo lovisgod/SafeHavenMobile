@@ -1,10 +1,13 @@
 package com.lovisgod.safehaven.ui.Adapters
 
 import android.os.Build
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import com.lovisgod.safehaven.R
@@ -14,7 +17,7 @@ import com.lovisgod.safehaven.databinding.SafetyTipItemBinding
 import com.lovisgod.safehaven.model.Contact
 import com.lovisgod.safehaven.model.SafetyTip
 
-class SafetyTipsListAdapter: RecyclerView.Adapter<SafetyTipsListAdapter.Viewholder>() {
+class SafetyTipsListAdapter(var navController: NavController): RecyclerView.Adapter<SafetyTipsListAdapter.Viewholder>() {
     private var tipsList: ArrayList<SafetyTip> = ArrayList()
     val dialog  = Dialog()
 
@@ -46,9 +49,15 @@ class SafetyTipsListAdapter: RecyclerView.Adapter<SafetyTipsListAdapter.Viewhold
         holder.time_.text = tip.time
 
         holder.layout.setOnClickListener {
+            val bundle = Bundle()
+            bundle.putString("title", tip.title)
+            bundle.putString("body", tip.body)
+            bundle.putString("time", tip.time)
+            bundle.putString("category", tip.category)
             Snackbar.make(holder.itemView, "${holder.title.text} clicked", Snackbar.LENGTH_LONG)
                 .setBackgroundTint(holder.layout.context.getColor(R.color.colorAccent))
                 .show()
+            navController.navigate(R.id.action_safetyTipsFragment_to_tipDetailsFragment, bundle)
         }
     }
 

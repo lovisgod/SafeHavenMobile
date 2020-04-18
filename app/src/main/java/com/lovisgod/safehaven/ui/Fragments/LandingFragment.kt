@@ -51,6 +51,10 @@ class LandingFragment : Fragment() {
         binding.directoryCard.setOnClickListener {
             navController.navigate(R.id.action_landingFragment_to_directoryFragment)
         }
+
+        binding.safetyTipsCard.setOnClickListener {
+            navController.navigate(R.id.action_landingFragment_to_safetyTipsFragment)
+        }
         return binding.root
     }
 

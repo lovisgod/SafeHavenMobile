@@ -16,6 +16,10 @@
         <action
             android:id="@+id/action_landingFragment_to_directoryFragment"
             app:destination="@id/directoryFragment" />
+        <action
+            android:id="@+id/action_landingFragment_to_safetyTipsFragment"
+            app:destination="@id/safetyTipsFragment"
+            app:popUpTo="@id/landingFragment" />
     </fragment>
     <fragment
         android:id="@+id/contactFragment"
@@ -35,4 +39,22 @@
         android:id="@+id/directoryListFragment"
         android:name="com.lovisgod.safehaven.ui.Fragments.DirectoryListFragment"
         android:label="DirectoryListFragment" />
+    <fragment
+        android:id="@+id/safetyTipsFragment"
+        android:name="com.lovisgod.safehaven.ui.Fragments.SafetyTipsFragment"
+        android:label="SafetyTipsFragment" >
+        <action
+            android:id="@+id/action_safetyTipsFragment_to_tipDetailsFragment"
+            app:destination="@id/tipDetailsFragment"
+            app:popUpTo="@id/safetyTipsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tipDetailsFragment"
+        android:name="com.lovisgod.safehaven.ui.Fragments.TipDetailsFragment"
+        android:label="TipDetailsFragment" >
+        <action
+            android:id="@+id/action_tipDetailsFragment_to_safetyTipsFragment"
+            app:destination="@id/safetyTipsFragment"
+            app:popUpTo="@id/safetyTipsFragment" />
+    </fragment>
 </navigation>

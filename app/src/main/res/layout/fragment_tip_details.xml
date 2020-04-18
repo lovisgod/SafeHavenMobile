@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.lovisgod.safehaven.viewmodel.AppViewModel"/>
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <ScrollView
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".ui.Fragments.TipDetailsFragment">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/title"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_marginTop="80dp"
+                android:layout_marginLeft="34dp"
+                style="@style/report_chil"
+                android:text="@string/working_fro"
+                android:gravity="center_vertical">
+            </com.google.android.material.textview.MaterialTextView>
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/tip_image"
+                android:layout_width="350dp"
+                android:layout_height="186dp"
+                app:layout_constraintTop_toBottomOf="@+id/title"
+                android:layout_marginTop="10dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:src="@drawable/ic_safe_logo">
+            </com.google.android.material.imageview.ShapeableImageView>
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tip_category"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                style="@style/report_chil"
+                android:text="Business"
+                android:textColor="@color/colorPrimary"
+                android:layout_marginTop="2dp"
+                app:layout_constraintLeft_toLeftOf="@+id/tip_image"
+                app:layout_constraintTop_toBottomOf="@+id/tip_image">
+            </com.google.android.material.textview.MaterialTextView>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tip_line"
+                android:layout_width="5dp"
+                android:layout_height="wrap_content"
+                style="@style/report_chil"
+                android:text="|"
+                android:textColor="#000000"
+                android:layout_marginLeft="2dp"
+                android:layout_marginStart="2dp"
+                app:layout_constraintLeft_toRightOf="@+id/tip_category"
+                app:layout_constraintTop_toTopOf="@+id/tip_category">
+            </com.google.android.material.textview.MaterialTextView>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tip_time"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                style="@style/report_chil"
+                android:text="2hrs ago"
+                android:layout_marginLeft="@dimen/dimen_8"
+                android:layout_marginStart="@dimen/dimen_8"
+                app:layout_constraintLeft_toRightOf="@+id/tip_line"
+                app:layout_constraintTop_toTopOf="@+id/tip_category">
+            </com.google.android.material.textview.MaterialTextView>
+
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/body"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/tip_image"
+                android:layout_marginTop="53dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                style="@style/report_chil"
+                app:layout_constraintRight_toRightOf="parent"
+                android:text="@string/body_sample">
+            </com.google.android.material.textview.MaterialTextView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/goto_btn"
+        android:layout_width="319dp"
+        android:layout_height="56dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:background="@color/colorPrimaryDark"
+        android:text="@string/back_to_tips"
+        android:paddingTop="14dp"
+        android:paddingBottom="14dp"
+        android:paddingRight="@dimen/twenty_dp"
+        android:paddingLeft="@dimen/twenty_dp"
+        android:layout_marginBottom="30dp">
+    </com.google.android.material.button.MaterialButton>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

@@ -25,4 +25,8 @@
     <string name="sega_link">Sega Link</string>
     <string name="report_chil">Report Child Abuse</string>
     <string name="working_fro">Working from Home During a Pandemic</string>
+    <string name="body_sample">\"Hi everyone! I\'m a visual designer and front-end developer based in Sydney, +
+                     "looking to learn all about UI/UX. In particular, I'm interested in design thinking because " +
+                     "I've found that it provides systemic solutions to complex problems. "\"</string>
+    <string name="back_to_tips">Back to Tips</string>
 </resources>
