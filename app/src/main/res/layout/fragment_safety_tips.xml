@@ -11,19 +11,19 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".Fragment.ContactFragment">
+        android:layout_height="match_parent">
 
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/contact_list"
+            android:id="@+id/safety_tips_list"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="35dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            tools:listitem="@layout/contact_item">
-        </androidx.recyclerview.widget.RecyclerView>
+            tools:listitem="@layout/safety_tip_item">
+        </androidx.recyclerview.widget.RecyclerView
+>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
