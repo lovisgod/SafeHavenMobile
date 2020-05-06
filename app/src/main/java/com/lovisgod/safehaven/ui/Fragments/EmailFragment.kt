@@ -11,15 +11,15 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 
 import com.lovisgod.safehaven.R
-import com.lovisgod.safehaven.databinding.FragmentPasswordBinding
-import com.lovisgod.safehaven.databinding.FragmentPhoneBinding
+import com.lovisgod.safehaven.databinding.FragmentEmailBinding
+import com.lovisgod.safehaven.databinding.FragmentFullNameBinding
 import com.lovisgod.safehaven.viewmodel.AuthViewModel
 
 /**
  * A simple [Fragment] subclass.
  */
-class PhoneFragment : Fragment() {
-    private lateinit var binding: FragmentPhoneBinding
+class EmailFragment : Fragment() {
+    private lateinit var binding: FragmentEmailBinding
     private lateinit var navController: NavController
     private val viewModel: AuthViewModel by lazy {
         val activity = requireNotNull(this.activity) {
@@ -29,6 +29,7 @@ class PhoneFragment : Fragment() {
             .get(AuthViewModel::class.java)
     }
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -36,13 +37,13 @@ class PhoneFragment : Fragment() {
         // Inflate the layout for this fragment
         navController = Navigation.findNavController(this.requireActivity(), R.id.auth_nav_host_fragment)
         // Inflate the layout for this fragment
-        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_phone, container, false)
+        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_email, container, false)
         binding.viewmodel = viewModel
         binding.lifecycleOwner = this
 
         binding.loginBtn.setOnClickListener {
-            viewModel.savePhone(binding.phone.text.toString())
-            navController.navigate(R.id.action_phoneFragment_to_emailFragment)
+            viewModel.saveEmail(binding.email.text.toString())
+            navController.navigate(R.id.action_emailFragment_to_passwordFragment)
         }
 
         return binding.root

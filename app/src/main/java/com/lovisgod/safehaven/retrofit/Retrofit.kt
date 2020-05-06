@@ -9,7 +9,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-private const val BASE_URL: String = "http://iris.kodehauz.xyz/api/"
+private const val BASE_URL: String = "https://safehaven-api.herokuapp.com/api/v1/"
 
 private val sLogLevel =
     if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE

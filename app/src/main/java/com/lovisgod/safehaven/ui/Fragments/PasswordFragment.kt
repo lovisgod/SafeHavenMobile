@@ -1,18 +1,25 @@
 package com.lovisgod.safehaven.ui.Fragments
 
+import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 
 import com.lovisgod.safehaven.R
+import com.lovisgod.safehaven.Util.Dialog
 import com.lovisgod.safehaven.databinding.FragmentPasswordBinding
+import com.lovisgod.safehaven.model.AppEvent
 import com.lovisgod.safehaven.viewmodel.AuthViewModel
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
 
 /**
  * A simple [Fragment] subclass.
@@ -24,7 +31,7 @@ class PasswordFragment : Fragment() {
         val activity = requireNotNull(this.activity) {
             "You can only access the viewModel after onActivityCreated()"
         }
-        ViewModelProvider(this, AuthViewModel.Factory(activity.application))
+        ViewModelProvider(activity, AuthViewModel.Factory(activity.application))
             .get(AuthViewModel::class.java)
     }
 
@@ -40,11 +47,43 @@ class PasswordFragment : Fragment() {
         binding.lifecycleOwner = this
 
         binding.loginBtn.setOnClickListener {
-          navController.navigate(R.id.action_passwordFragment_to_verifyFragment)
+          binding.progress.visibility = View.VISIBLE
+          viewModel.register(binding.password.text.toString(), binding.passwordConfirm.text.toString())
         }
 
 
         return binding.root
+    }
+
+    @RequiresApi(Build.VERSION_CODES.M)
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    fun onAppEvent(event: AppEvent) {
+        binding.progress.visibility = View.INVISIBLE
+        when(event.event) {
+            "success" -> {
+                Dialog().makeSnack(binding.loginBtn, event.message, this.requireContext())
+                navController.navigate(R.id.action_passwordFragment_to_verifyFragment)
+            }
+
+            "error" -> {
+                // display message
+                Dialog().makeSnack(binding.loginBtn, event.message, this.requireContext())
+            }
+        }
+    }
+
+
+
+    override fun onStart() {
+        super.onStart()
+        // registers the event listener
+        EventBus.getDefault().register(this)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        // unregister the event listener
+        EventBus.getDefault().unregister(this)
     }
 
 }

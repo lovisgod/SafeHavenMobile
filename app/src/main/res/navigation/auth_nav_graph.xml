@@ -36,16 +36,18 @@
             app:destination="@id/verifyFragment"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_passwordFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/fullnameFragment" />
     </fragment>
     <fragment
         android:id="@+id/phoneFragment"
         android:name="com.lovisgod.safehaven.ui.Fragments.PhoneFragment"
         android:label="PhoneFragment" >
         <action
-            android:id="@+id/action_phoneFragment_to_passwordFragment"
-            app:destination="@id/passwordFragment"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+            android:id="@+id/action_phoneFragment_to_emailFragment"
+            app:destination="@id/emailFragment" />
     </fragment>
     <fragment
         android:id="@+id/verifyFragment"
@@ -56,6 +58,14 @@
             app:destination="@id/loginFragment"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/emailFragment"
+        android:name="com.lovisgod.safehaven.ui.Fragments.EmailFragment"
+        android:label="EmailFragment" >
+        <action
+            android:id="@+id/action_emailFragment_to_passwordFragment"
+            app:destination="@id/passwordFragment" />
     </fragment>
 
 </navigation>

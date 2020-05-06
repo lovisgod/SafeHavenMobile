@@ -1,6 +1,7 @@
 package com.lovisgod.safehaven.retrofit
 
 import com.google.gson.Gson
+import com.lovisgod.safehaven.model.ErrorResponse
 import com.lovisgod.safehaven.model.GeneralResponse
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
@@ -22,16 +23,16 @@ import retrofit2.Response
             } catch (e: Throwable) {
                 println("input message ${e.message}")
                 e.printStackTrace()
-                ResultWrapper.NetworkError()
+                ResultWrapper.NetworkError(message = e.message.toString())
             }
         }
     }
 
 
-    private fun extractErrorBody(response: ResponseBody?): GeneralResponse? {
+    private fun extractErrorBody(response: ResponseBody?): ErrorResponse? {
         return try {
             val gson = Gson()
-            return gson.fromJson(response?.string(), GeneralResponse::class.java)
+            return gson.fromJson(response?.string(), ErrorResponse::class.java)
         } catch (exception: Exception) {
             println("exception ${exception.message}")
             null

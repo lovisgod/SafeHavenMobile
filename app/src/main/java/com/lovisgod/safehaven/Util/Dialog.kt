@@ -49,4 +49,11 @@ class Dialog {
         // trigger close events
         EventBus.getDefault().post(ClosedMDialog(event = "close"))
     }
+
+    @RequiresApi(Build.VERSION_CODES.M)
+    fun makeSnack(view:View, message:String, context: Context) {
+        Snackbar.make(view, message, Snackbar.LENGTH_LONG)
+            .setBackgroundTint(context.getColor(R.color.colorAccent))
+            .show()
+    }
 }

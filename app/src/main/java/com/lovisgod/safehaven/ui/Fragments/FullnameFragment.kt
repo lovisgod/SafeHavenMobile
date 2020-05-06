@@ -24,7 +24,7 @@ class FullnameFragment : Fragment() {
         val activity = requireNotNull(this.activity) {
             "You can only access the viewModel after onActivityCreated()"
         }
-        ViewModelProvider(this, AuthViewModel.Factory(activity.application))
+        ViewModelProvider(activity, AuthViewModel.Factory(activity.application))
             .get(AuthViewModel::class.java)
     }
 
@@ -40,6 +40,7 @@ class FullnameFragment : Fragment() {
         binding.lifecycleOwner = this
 
         binding.loginBtn.setOnClickListener {
+            viewModel.saveName(binding.fullname.text.toString())
             navController.navigate(R.id.action_fullnameFragment_to_phoneFragment)
         }
 
