@@ -48,7 +48,7 @@ class DirectoryListAdapter: RecyclerView.Adapter<DirectoryListAdapter.Viewholder
             Snackbar.make(holder.itemView, "${holder.name.text} clicked", Snackbar.LENGTH_LONG)
                 .setBackgroundTint(holder.name.context.getColor(R.color.colorAccent))
                 .show()
-            dialog.displayContactDialog(holder.more_info.context, contact.name, contact.address, contact.phone_number)?.show()
+            dialog.displayContactDialog(holder.more_info.context, contact.name, contact.address, contact.phone_number, "")?.show()
         }
     }
 

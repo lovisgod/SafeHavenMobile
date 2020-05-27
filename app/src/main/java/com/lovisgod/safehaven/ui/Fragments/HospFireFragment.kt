@@ -58,31 +58,9 @@ class HospFireFragment : Fragment() {
         if (arguements?.getString("to_contact", "") != null) {
             binding.forEmValue.text = arguements.getString("to_contact", "")
 
-//            if (arguements.getString("to_contact", "") == "Ambulance") {
-//                viewModel.searchPlaces(type = "hospital")
-//            }
-//
-//            if (arguements.getString("to_contact", "") == "Fire Service") {
-//                viewModel.searchPlaces(type = "hospital")
-//            }
         }
 
 
-//        // create sample contact items
-//        val contact1 = Contact(
-//            name = "Adego Hospital",
-//            phone_number = "09098765432",
-//            address = resources.getString(R.string.lawal_st_ne),
-//            status = "close"
-//        )
-//        val contact2 = Contact(
-//            name = "Adega Hospital",
-//            phone_number = "09098765433",
-//            address = resources.getString(R.string.lawal_st_ne),
-//            status = "open"
-//        )
-//        sampleContactList.add(contact1)
-//        sampleContactList.add(contact2)
 
         EasyLocation(this.requireActivity(), object: EasyLocation.EasyLocationCallBack{
             override fun permissionDenied() {
