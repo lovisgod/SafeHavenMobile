@@ -10,10 +10,11 @@ import com.google.android.material.snackbar.Snackbar
 import com.lovisgod.safehaven.R
 import com.lovisgod.safehaven.Util.Dialog
 import com.lovisgod.safehaven.databinding.ContactItemBinding
+import com.lovisgod.safehaven.model.Business
 import com.lovisgod.safehaven.model.Contact
 
 class HospFireAdapter: RecyclerView.Adapter<HospFireAdapter.Viewholder>() {
-    private var contactList: ArrayList<Contact> = ArrayList()
+    private var contactList: ArrayList<Business> = ArrayList()
     val dialog  = Dialog()
 
     class Viewholder(itemView: ContactItemBinding): RecyclerView.ViewHolder(itemView.root) {
@@ -42,15 +43,20 @@ class HospFireAdapter: RecyclerView.Adapter<HospFireAdapter.Viewholder>() {
     override fun onBindViewHolder(holder: HospFireAdapter.Viewholder, position: Int) {
       val contact = contactList.get(position)
         holder.name.text = contact.name
-        holder.address.text = contact.address
-        holder.phone_number.text = contact.phone_number
+        holder.address.text = contact.vicinity
+        if (contact.opening_hours != null) {
+            if (contact.opening_hours.open_now) {
+                holder.open_button.setImageDrawable(holder.name.context.getDrawable(R.drawable.ic_open))
+            }
+        }
+
         holder.more_info.setOnClickListener {
 //            Snackbar.make(holder.layout, "more info clicked", Snackbar.LENGTH_LONG).show()
-            dialog.displayContactDialog(holder.more_info.context, contact.name, contact.address, contact.phone_number)?.show()
+//            dialog.displayContactDialog(holder.more_info.context, contact.name, contact.address, contact.phone_number)?.show()
         }
     }
 
-    fun setAdvertList (contactList: ArrayList<Contact>){
+    fun setAdvertList (contactList: ArrayList<Business>){
         this.contactList = contactList
         println("this is ${contactList}")
         notifyDataSetChanged()

@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId "com.lovisgod.safehaven"
-        minSdkVersion 16
+        minSdkVersion 22
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -96,4 +96,5 @@ dependencies {
     implementation 'com.auth0.android:jwtdecode:1.4.0'
     implementation 'com.google.android.gms:play-services-maps:17.0.0'
     implementation 'com.github.AravindVijay7:GeoLocator-Android:1.0.2'
+    implementation 'com.github.robinkrsingh:easylocation:0.1.1'
 }

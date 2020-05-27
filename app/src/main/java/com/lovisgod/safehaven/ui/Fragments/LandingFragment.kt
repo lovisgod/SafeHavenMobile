@@ -1,10 +1,14 @@
 package com.lovisgod.safehaven.ui.Fragments
 
+import android.app.Activity
+import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.app.ActivityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
@@ -28,6 +32,12 @@ class LandingFragment : Fragment() {
             .get(AppViewModel::class.java)
     }
 
+    companion object {
+
+        private const val LOCATION_PERMISSION_REQUEST_CODE = 1
+
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -37,6 +47,8 @@ class LandingFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_landing, container, false)
         binding.lifecycleOwner = this
         binding.viewmodel = viewModel
+
+        checkLocationPermision()
 
         var bundle = Bundle()
         binding.hospitalCard.setOnClickListener {
@@ -58,4 +70,27 @@ class LandingFragment : Fragment() {
         return binding.root
     }
 
+    fun checkLocationPermision() {
+        if (ActivityCompat.checkSelfPermission(
+                this.requireContext(),
+                android.Manifest.permission.ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            ActivityCompat.requestPermissions(
+                this.requireActivity(),
+                arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION),
+                LOCATION_PERMISSION_REQUEST_CODE
+            )
+            return
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == LOCATION_PERMISSION_REQUEST_CODE) {
+            if (resultCode == Activity.RESULT_OK) {
+
+            }
+        }
+    }
 }
