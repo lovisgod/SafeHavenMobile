@@ -27,11 +27,9 @@ class AppViewModel(application: Application): ViewModel() {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
 //                val location = Geocode().getCoordinates()
-                println("this is location ${location}")
                 val response =  googleRepo.searchPlaces(location, type)
                 when(response) {
                     is ResultWrapper.Success -> {
-                        println(response.value.results)
                         placesAround.postValue(response.value.results)
                     }
 
@@ -41,6 +39,23 @@ class AppViewModel(application: Application): ViewModel() {
                     is ResultWrapper.NetworkError -> {
                         EventBus.getDefault().post(AppEvent(event = "error", message = response.message))
                     }
+                }
+            }
+        }
+
+    fun getPlaceDetails(place_id: String) =
+        liveData(Dispatchers.IO) {
+            val fields = "name,rating,international_phone_number,website"
+            when(val response = googleRepo.getPlaceDetails(place_id = place_id, fields = fields)) {
+                is ResultWrapper.Success -> {
+                    println(response.value.result)
+                    emit(response.value.result)
+                }
+                is ResultWrapper.GenericError -> {
+                    EventBus.getDefault().post(AppEvent(event = "error", message = response.error!!.message))
+                }
+                is ResultWrapper.NetworkError -> {
+                    EventBus.getDefault().post(AppEvent(event = "error", message = response.message))
                 }
             }
         }

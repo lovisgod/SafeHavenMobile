@@ -15,7 +15,6 @@ import com.lovisgod.safehaven.R
 import com.lovisgod.safehaven.databinding.FragmentDirectoryListBinding
 import com.lovisgod.safehaven.model.Contact
 import com.lovisgod.safehaven.ui.Adapters.DirectoryListAdapter
-import com.lovisgod.safehaven.ui.Adapters.HospFireAdapter
 import com.lovisgod.safehaven.viewmodel.AppViewModel
 
 /**

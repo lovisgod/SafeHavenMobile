@@ -13,9 +13,11 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.github.loadingview.LoadingDialog
 
 import com.lovisgod.safehaven.R
 import com.lovisgod.safehaven.databinding.FragmentHospFireBinding
+import com.lovisgod.safehaven.model.Business
 import com.lovisgod.safehaven.model.Contact
 import com.lovisgod.safehaven.ui.Adapters.HospFireAdapter
 import com.lovisgod.safehaven.viewmodel.AppViewModel
@@ -27,10 +29,11 @@ import com.robin.locationgetter.EasyLocation
 class HospFireFragment : Fragment() {
     private lateinit var binding: FragmentHospFireBinding
     private lateinit var navController: NavController
-    private var adapter = HospFireAdapter()
+    private lateinit var adapter : HospFireAdapter
 
     // this is contact list that will be removed later
     private var sampleContactList: ArrayList<Contact> = ArrayList()
+    private var businesses: ArrayList<Business> = ArrayList()
     private val viewModel: AppViewModel by lazy {
         val activity = requireNotNull(this.activity) {
             "You can only access the viewModel after onActivityCreated()"
@@ -49,6 +52,7 @@ class HospFireFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_hosp_fire, container, false)
         binding.lifecycleOwner = this
         binding.viewmodel = viewModel
+        adapter = HospFireAdapter(viewModel, viewLifecycleOwner, this.requireActivity())
         binding.contactList.layoutManager = LinearLayoutManager(this.requireContext(), LinearLayoutManager.VERTICAL,false)
         binding.contactList.adapter = adapter
         if (arguements?.getString("to_contact", "") != null) {
@@ -97,7 +101,6 @@ class HospFireFragment : Fragment() {
 
             override fun getLocation(location: Location) {
                 val loc = "${location.latitude},${location.longitude}"
-                Log.i("Location_lat_lng"," latitude ${location.latitude} longitude ${location.longitude}")
                 if (arguements?.getString("to_contact", "") != null) {
 
                     if (arguements.getString("to_contact", "") == "Ambulance") {
@@ -110,11 +113,17 @@ class HospFireFragment : Fragment() {
                 }
             }
         })
+
+        val dialog = LoadingDialog.get(this.requireActivity()).show()
         viewModel._placesAround.observe(viewLifecycleOwner, Observer {
             if( it.size == 0){
 
             } else {
-                adapter.setAdvertList(it)
+                if (businesses.size == 0) {
+                    businesses = it
+                    adapter.setAdvertList(it)
+                    dialog.hide()
+                }
             }
         })
 //        adapter.setAdvertList(sampleContactList)

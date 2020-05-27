@@ -1,19 +1,25 @@
 package com.lovisgod.safehaven.ui.Adapters
 
+import android.app.Activity
 import android.os.Build
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.RecyclerView
+import com.github.loadingview.LoadingDialog
 import com.google.android.material.snackbar.Snackbar
 import com.lovisgod.safehaven.R
 import com.lovisgod.safehaven.Util.Dialog
 import com.lovisgod.safehaven.databinding.ContactItemBinding
 import com.lovisgod.safehaven.model.Business
 import com.lovisgod.safehaven.model.Contact
+import com.lovisgod.safehaven.viewmodel.AppViewModel
 
-class HospFireAdapter: RecyclerView.Adapter<HospFireAdapter.Viewholder>() {
+class HospFireAdapter(val viewmodel: AppViewModel, val lifecycleOwner: LifecycleOwner, val activity: Activity): RecyclerView.Adapter<HospFireAdapter.Viewholder>() {
     private var contactList: ArrayList<Business> = ArrayList()
     val dialog  = Dialog()
 
@@ -51,14 +57,20 @@ class HospFireAdapter: RecyclerView.Adapter<HospFireAdapter.Viewholder>() {
         }
 
         holder.more_info.setOnClickListener {
-//            Snackbar.make(holder.layout, "more info clicked", Snackbar.LENGTH_LONG).show()
-//            dialog.displayContactDialog(holder.more_info.context, contact.name, contact.address, contact.phone_number)?.show()
+            val dialogg = LoadingDialog.get(activity).show()
+            Snackbar.make(holder.layout, "more info clicked", Snackbar.LENGTH_LONG).show()
+            viewmodel.getPlaceDetails(contact.place_id).observe(lifecycleOwner, Observer {
+                dialogg.hide()
+                if (it.name != null) {
+                    dialog.displayContactDialog(holder.more_info.context, contact.name, contact.vicinity, it.international_phone_number)?.show()
+                }
+            })
+
         }
     }
 
     fun setAdvertList (contactList: ArrayList<Business>){
         this.contactList = contactList
-        println("this is ${contactList}")
         notifyDataSetChanged()
     }
 }

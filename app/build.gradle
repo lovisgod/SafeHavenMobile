@@ -97,4 +97,5 @@ dependencies {
     implementation 'com.google.android.gms:play-services-maps:17.0.0'
     implementation 'com.github.AravindVijay7:GeoLocator-Android:1.0.2'
     implementation 'com.github.robinkrsingh:easylocation:0.1.1'
+    implementation 'com.samigehi:loadingview:1.1'
 }
