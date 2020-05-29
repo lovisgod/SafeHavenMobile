@@ -99,6 +99,10 @@ class LandingActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
         if (id == R.id.nav_report_history) {
           Toast.makeText(this, "history clicked", Toast.LENGTH_LONG).show()
         }
+
+        if ( id == R.id.nav_safe_friends) {
+            navController.navigate(R.id.safeFriendsFragment)
+        }
         return true
     }
 }

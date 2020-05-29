@@ -20,6 +20,10 @@
             android:id="@+id/action_landingFragment_to_safetyTipsFragment"
             app:destination="@id/safetyTipsFragment"
             app:popUpTo="@id/landingFragment" />
+        <action
+            android:id="@+id/action_landingFragment_to_safeFriendsFragment"
+            app:destination="@id/safeFriendsFragment"
+            app:popUpTo="@id/landingFragment" />
     </fragment>
     <fragment
         android:id="@+id/contactFragment"
@@ -57,4 +61,8 @@
             app:destination="@id/safetyTipsFragment"
             app:popUpTo="@id/safetyTipsFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/safeFriendsFragment"
+        android:name="com.lovisgod.safehaven.ui.Fragments.SafeFriendsFragment"
+        android:label="SafeFriendsFragment" />
 </navigation>

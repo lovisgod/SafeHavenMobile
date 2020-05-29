@@ -12,6 +12,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textview.MaterialTextView
 import com.lovisgod.safehaven.R
 import com.lovisgod.safehaven.model.ClosedMDialog
 import kotlinx.android.synthetic.main.contact_dialog.*
@@ -34,9 +36,6 @@ class Dialog {
         val website = mView.findViewById<TextView>(R.id.website)
 
         call_now.setOnClickListener {
-//            Snackbar.make(mView, "call now clicked", Snackbar.LENGTH_LONG)
-//                .setBackgroundTint(context.getColor(R.color.colorAccent))
-//                .show()
             val intent = Intent(Intent.ACTION_CALL, Uri.parse("tel:" + "${phone_number}"))
             context.startActivity(intent)
         }
@@ -52,6 +51,87 @@ class Dialog {
         val alertDialog = builder.create()
         return alertDialog
     }
+
+
+    @SuppressLint("MissingPermission")
+    @RequiresApi(Build.VERSION_CODES.M)
+    fun displayAddContactDialog(context: Context): AlertDialog? {
+        val builder = AlertDialog.Builder(context)
+        var inflater =
+            context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        val mView: View = inflater.inflate( R.layout.safefriend_layout, null )
+        val layoutTitle = mView.findViewById<TextView>(R.id.contact_dialog_title)
+        val friendName = mView.findViewById<TextInputEditText>(R.id.name_input)
+        val friendNumber = mView.findViewById<TextInputEditText>(R.id.phone_input)
+        val saveBtn = mView.findViewById<MaterialTextView>(R.id.save_number)
+        val cancelBtn = mView.findViewById<MaterialTextView>(R.id.cancel_number)
+
+        cancelBtn.text = "Cancel"
+
+        saveBtn.setOnClickListener {
+            if ( friendName.text.toString().isNotBlank() || friendNumber.text.toString().isNotBlank() ) {
+                println(friendName.text.toString())
+                println(friendNumber.text.toString())
+                Snackbar.make(mView, "Save clicked", Snackbar.LENGTH_LONG)
+                    .setBackgroundTint(context.getColor(R.color.colorAccent))
+                    .show()
+            }
+
+        }
+
+        cancelBtn.setOnClickListener {
+            Snackbar.make(mView, "Cancel clicked", Snackbar.LENGTH_LONG)
+                .setBackgroundTint(context.getColor(R.color.colorAccent))
+                .show()
+            cancel_dailog()
+        }
+        builder.setView(mView)
+        val alertDialog = builder.create()
+        return alertDialog
+    }
+
+
+    // edit friend details
+    @SuppressLint("MissingPermission")
+    @RequiresApi(Build.VERSION_CODES.M)
+    fun displayEditContactDialog(context: Context, phone: String, friendname: String): AlertDialog? {
+        val builder = AlertDialog.Builder(context)
+        var inflater =
+            context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        val mView: View = inflater.inflate( R.layout.safefriend_layout, null )
+        val layoutTitle = mView.findViewById<TextView>(R.id.contact_dialog_title)
+        val friendName = mView.findViewById<TextInputEditText>(R.id.name_input)
+        val friendNumber = mView.findViewById<TextInputEditText>(R.id.phone_input)
+        val saveBtn = mView.findViewById<MaterialTextView>(R.id.save_number)
+        val cancelBtn = mView.findViewById<MaterialTextView>(R.id.cancel_number)
+
+        layoutTitle.text = "Edit Details"
+        friendName.setText(friendname)
+        friendNumber.setText(phone)
+        cancelBtn.text = "Delete"
+
+        saveBtn.setOnClickListener {
+            if ( friendName.text.toString().isNotBlank() || friendNumber.text.toString().isNotBlank() ) {
+                println(friendName.text.toString())
+                println(friendNumber.text.toString())
+                Snackbar.make(mView, "Save clicked", Snackbar.LENGTH_LONG)
+                    .setBackgroundTint(context.getColor(R.color.colorAccent))
+                    .show()
+            }
+        }
+
+        cancelBtn.setOnClickListener {
+            Snackbar.make(mView, "Cancel clicked", Snackbar.LENGTH_LONG)
+                .setBackgroundTint(context.getColor(R.color.colorAccent))
+                .show()
+            cancel_dailog()
+        }
+        builder.setView(mView)
+        val alertDialog = builder.create()
+        return alertDialog
+    }
+
+
 
     fun cancel_dailog() {
         // trigger close events

@@ -30,4 +30,8 @@
                      "I've found that it provides systemic solutions to complex problems. "\"</string>
     <string name="back_to_tips">Back to Tips</string>
     <string name="confirm_pass">Confirm Password</string>
+    <string name="a_safe_frie">
+A safe friend is someone we can quickly send emergency messages to, when you are in danger or need help. \nYou can only choose 3 friends, so choose careful
+    </string>
+    <string name="add_new_fri">Add new friend</string>
 </resources>

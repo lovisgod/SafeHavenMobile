@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.lovisgod.safehaven.viewmodel.AppViewModel"/>
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/friend_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="@dimen/dimen_8"
+    android:paddingTop="@dimen/dimen_8"
+    android:paddingLeft="@dimen/dimen_8"
+    android:paddingRight="@dimen/dimen_8">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/friend_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/michael_afo"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:text="Adebola Samson Koji"
+        android:layout_marginLeft="@dimen/twenty_dp"
+        android:layout_marginTop="@dimen/twenty_dp"
+        android:layout_marginStart="@dimen/twenty_dp">
+
+    </com.google.android.material.textview.MaterialTextView>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/friend_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/report_chil"
+        app:layout_constraintTop_toBottomOf="@+id/friend_title"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:text="@string/number_smaple"
+        android:layout_marginLeft="@dimen/twenty_dp"
+        android:layout_marginTop="@dimen/dimen_12"
+        android:layout_marginStart="@dimen/twenty_dp">
+
+    </com.google.android.material.textview.MaterialTextView>
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/see_details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@+id/friend_title"
+        app:layout_constraintBottom_toBottomOf="@+id/friend_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:src="@drawable/ic_greater_than">
+    </com.google.android.material.imageview.ShapeableImageView>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#F4F1FF"
+            app:layout_constraintTop_toBottomOf="@+id/friend_number"
+            android:layout_marginTop="@dimen/twenty_dp">
+        </View>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

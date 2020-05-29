@@ -67,6 +67,10 @@ class LandingFragment : Fragment() {
         binding.safetyTipsCard.setOnClickListener {
             navController.navigate(R.id.action_landingFragment_to_safetyTipsFragment)
         }
+
+        binding.safeFriends.setOnClickListener {
+            navController.navigate(R.id.action_landingFragment_to_safeFriendsFragment)
+        }
         return binding.root
     }
 

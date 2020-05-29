@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.lovisgod.safehaven.viewmodel.AppViewModel"/>
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="ui.Fragments.SafeFriendsFragment">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/description_safe"
+            android:padding="@dimen/dimen_12"
+            android:layout_width="370dp"
+            android:layout_height="wrap_content"
+            android:lines="4"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="100dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginLeft="@dimen/twenty_dp"
+            android:layout_marginStart="@dimen/twenty_dp"
+            style="@style/a_safe_frie"
+            android:text="@string/a_safe_frie">
+        </com.google.android.material.textview.MaterialTextView>
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/add_friend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/description_safe"
+            android:layout_marginTop="30dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginLeft="@dimen/twenty_dp"
+            android:layout_marginStart="@dimen/twenty_dp"
+            android:drawableStart="@drawable/ic_add_friend"
+            android:gravity="center"
+            android:padding="@dimen/dimen_8"
+            android:textSize="16sp"
+            style="@style/add_new_fri"
+            android:text="@string/add_new_fri">
+        </com.google.android.material.textview.MaterialTextView>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/friends_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/fifty_dp"
+            app:layout_constraintTop_toBottomOf="@+id/add_friend"
+            tools:listitem="@layout/friend_item">
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
