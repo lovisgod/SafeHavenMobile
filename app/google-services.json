@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "691834991559",
+    "firebase_url": "https://safehavenapp-a165d.firebaseio.com",
+    "project_id": "safehavenapp-a165d",
+    "storage_bucket": "safehavenapp-a165d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:691834991559:android:4a31ee056e1c4b890f9fe2",
+        "android_client_info": {
+          "package_name": "com.lovisgod.safehaven"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "691834991559-i050obf9uip3hbep2nn1auupu209cs74.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.lovisgod.safehaven",
+            "certificate_hash": "f029de9f20dd4e3769b79f6d4b2dba9a21ea52a7"
+          }
+        },
+        {
+          "client_id": "691834991559-mc4tv99ngiemdsng9q607fjmmrolgf3q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJEtjrXeLJElvfmSmpnwA-4qard_myZG0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "691834991559-mc4tv99ngiemdsng9q607fjmmrolgf3q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

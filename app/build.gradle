@@ -2,6 +2,9 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.firebase.crashlytics'
+
 
 android {
     compileSdkVersion 29
@@ -98,4 +101,8 @@ dependencies {
     implementation 'com.github.AravindVijay7:GeoLocator-Android:1.0.2'
     implementation 'com.github.robinkrsingh:easylocation:0.1.1'
     implementation 'com.samigehi:loadingview:1.1'
+
+    // firebase dependencies
+    implementation 'com.google.firebase:firebase-analytics-ktx:17.4.2'
+    implementation 'com.google.firebase:firebase-crashlytics:17.0.0'
 }
