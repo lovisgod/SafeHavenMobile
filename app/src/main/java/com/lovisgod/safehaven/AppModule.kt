@@ -1,6 +1,7 @@
 package com.lovisgod.safehaven
 
 import com.lovisgod.safehaven.Repoitory.AuthRepo
+import com.lovisgod.safehaven.Repoitory.FireBaseRepo
 import com.lovisgod.safehaven.Repoitory.GoogleRepo
 import com.lovisgod.safehaven.retrofit.GoogleNetwork
 import com.lovisgod.safehaven.retrofit.Network
@@ -13,4 +14,5 @@ val appModule = module {
     single { Network }
     single { GoogleNetwork }
     single { GoogleRepo(get())}
+    single { FireBaseRepo() }
 }

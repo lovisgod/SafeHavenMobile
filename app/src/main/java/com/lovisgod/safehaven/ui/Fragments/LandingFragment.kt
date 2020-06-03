@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.app.ActivityCompat
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
@@ -28,7 +29,7 @@ class LandingFragment : Fragment() {
         val activity = requireNotNull(this.activity) {
             "You can only access the viewModel after onActivityCreated()"
         }
-        ViewModelProvider(this, AppViewModel.Factory(activity.application))
+        ViewModelProvider(activity, AppViewModel.Factory(activity.application))
             .get(AppViewModel::class.java)
     }
 
@@ -71,6 +72,8 @@ class LandingFragment : Fragment() {
         binding.safeFriends.setOnClickListener {
             navController.navigate(R.id.action_landingFragment_to_safeFriendsFragment)
         }
+
+        showDetails()
         return binding.root
     }
 
@@ -96,5 +99,19 @@ class LandingFragment : Fragment() {
 
             }
         }
+    }
+
+    fun showDetails () {
+       viewModel._name.observe(viewLifecycleOwner, Observer {
+           binding.profileName.text = it
+       })
+        viewModel._email.observe(viewLifecycleOwner, Observer {
+            println(it)
+            binding.profileEmail.text = it
+        })
+       viewModel._phoneNumber.observe(viewLifecycleOwner, Observer {
+           println(it)
+           binding.profilePhone.text = it
+       })
     }
 }

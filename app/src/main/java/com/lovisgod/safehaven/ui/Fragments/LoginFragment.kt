@@ -49,7 +49,7 @@ class LoginFragment : Fragment() {
 
         binding.loginBtn.setOnClickListener {
            binding.progress.visibility =View.VISIBLE
-            viewModel.login(email = binding.email.text.toString(),password = binding.password.text.toString())
+            viewModel.fireBaseLogin(email = binding.email.text.toString(),password = binding.password.text.toString())
         }
 
         binding.signup.setOnClickListener {

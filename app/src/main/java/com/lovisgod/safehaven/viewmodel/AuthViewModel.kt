@@ -3,9 +3,16 @@ package com.lovisgod.safehaven.viewmodel
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import com.lovisgod.safehaven.Repoitory.AuthRepo
+import com.lovisgod.safehaven.Repoitory.FireBaseRepo
 import com.lovisgod.safehaven.model.AppEvent
+import com.lovisgod.safehaven.model.Users
+import com.lovisgod.safehaven.model.loginResponse
 import com.lovisgod.safehaven.retrofit.ResultWrapper
 import com.pixplicity.easyprefs.library.Prefs
 import kotlinx.coroutines.Dispatchers
@@ -17,6 +24,7 @@ import org.koin.android.ext.android.inject
 class AuthViewModel(application: Application): ViewModel() {
 
     val authRepo by application.inject<AuthRepo>()
+    val fireBaseRepo by application.inject<FireBaseRepo>()
     var saved_name = ""
     var saved_phone =""
     var saved_email = ""
@@ -76,6 +84,50 @@ class AuthViewModel(application: Application): ViewModel() {
             }
         }
     }
+
+    fun fireBaseSignup (password: String) {
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                try {
+                    val response = fireBaseRepo.registerUser(saved_email, password)
+                   response.addOnSuccessListener {
+                        println("it'successful here")
+                        fireBaseRepo.saveUserDetails(email = saved_email, phoneNumber = saved_phone, name = saved_name)
+                        EventBus.getDefault().post(AppEvent(event = "success", message = "Registration Successful"))
+                    }
+
+                    response.addOnFailureListener {
+                        EventBus.getDefault().post(AppEvent(
+                            event = "error",
+                            message = "Registration unsuccessful please check your details ${it.localizedMessage}"))
+                    }
+                } catch (e: Exception) {
+                    println(e.localizedMessage)
+                    EventBus.getDefault().post(AppEvent(event = "error", message = "error is ${e.localizedMessage}"))
+                }
+            }
+        }
+    }
+
+    fun fireBaseLogin (email: String, password: String) {
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                val loginRes = fireBaseRepo.loginUser(email, password)
+                loginRes.addOnSuccessListener {
+                    EventBus.getDefault().post(AppEvent(event = "success", message = "Login successful"))
+                }
+
+               loginRes.addOnFailureListener {
+                   EventBus.getDefault().post(AppEvent(
+                       event = "error",
+                       message = "Login unsuccessful please check your details ${it.localizedMessage}"))
+               }
+
+            }
+        }
+    }
+
+
 
     fun login(password:String, email:String){
         viewModelScope.launch {

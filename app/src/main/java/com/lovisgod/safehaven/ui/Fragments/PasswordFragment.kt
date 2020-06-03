@@ -35,6 +35,7 @@ class PasswordFragment : Fragment() {
             .get(AuthViewModel::class.java)
     }
 
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -48,7 +49,12 @@ class PasswordFragment : Fragment() {
 
         binding.loginBtn.setOnClickListener {
           binding.progress.visibility = View.VISIBLE
-          viewModel.register(binding.password.text.toString(), binding.passwordConfirm.text.toString())
+          if ( binding.password.text.toString() != binding.passwordConfirm.text.toString()) {
+              Dialog().makeSnack(binding.loginBtn, "Please check your password", this.requireContext())
+              binding.progress.visibility = View.GONE
+          } else {
+              viewModel.fireBaseSignup(binding.password.text.toString())
+          }
         }
 
 
@@ -62,7 +68,7 @@ class PasswordFragment : Fragment() {
         when(event.event) {
             "success" -> {
                 Dialog().makeSnack(binding.loginBtn, event.message, this.requireContext())
-                navController.navigate(R.id.action_passwordFragment_to_verifyFragment)
+                navController.navigate(R.id.action_passwordFragment_to_loginFragment)
             }
 
             "error" -> {
