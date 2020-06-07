@@ -1,6 +1,8 @@
 package com.lovisgod.safehaven.viewmodel
 
 import android.app.Application
+import android.content.ContentValues
+import android.util.Log
 import androidx.lifecycle.*
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.toObject
@@ -9,10 +11,7 @@ import com.lovisgod.safehaven.Repoitory.AuthRepo
 import com.lovisgod.safehaven.Repoitory.FireBaseRepo
 import com.lovisgod.safehaven.Repoitory.GoogleRepo
 import com.lovisgod.safehaven.Util.Geocode
-import com.lovisgod.safehaven.model.AppEvent
-import com.lovisgod.safehaven.model.Business
-import com.lovisgod.safehaven.model.PlacesResponses
-import com.lovisgod.safehaven.model.Users
+import com.lovisgod.safehaven.model.*
 import com.lovisgod.safehaven.retrofit.ResultWrapper
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -33,9 +32,13 @@ class AppViewModel(application: Application): ViewModel() {
     var phoneNumber :MutableLiveData<String> = MutableLiveData()
     val _phoneNumber: LiveData<String>get() = phoneNumber
 
+    var friendList :MutableLiveData<ArrayList<Friend>> = MutableLiveData()
+    val _friendList: LiveData<ArrayList<Friend>>get() = friendList
+
 
     init {
         getUserProfileFirebase()
+        getSafeFriendList()
     }
 
 
@@ -87,6 +90,76 @@ class AppViewModel(application: Application): ViewModel() {
                 phoneNumber.postValue(userdata.phone_number)
             }
 
+    }
+
+    fun saveSafeFriend(name:String, phoneNumber: String) {
+        viewModelScope.launch() {
+            try {
+                withContext(Dispatchers.IO) {
+                    val email = Firebase.auth.currentUser!!.email!!
+                    fireBaseRepo.saveFriendDetails(name = name, phoneNumber = phoneNumber, userEmail = email)
+                }
+            } catch (e: Exception) {
+                println(e.localizedMessage)
+            }
+        }
+
+    }
+
+
+    fun getSafeFriendList() {
+        viewModelScope.launch() {
+            try {
+                withContext(Dispatchers.IO) {
+                    val email = Firebase.auth.currentUser!!.email!!
+                    var response = fireBaseRepo.getSafeFriendList(email)
+                    // this fetch  friends list, and update it
+                    response.get().addOnSuccessListener {documents ->
+                        var friends = ArrayList<Friend>()
+                        if (documents != null) {
+                            for ( document in documents ) {
+                                val data = document.data
+                                val name = data.get("name")
+                                val phoneNumber = data.get("phone_number")
+                                val myEmail = data.get("user_email")
+
+                                friends.add(Friend(name = name.toString(), user_email = myEmail.toString(), phone_number = phoneNumber.toString()))
+                            }
+                            println(friends)
+                            friendList.postValue(friends)
+                        }
+                    }
+
+                    // this listens to change in value and update the list
+                    response.addSnapshotListener { querySnapshot, exception ->
+                        var friends = ArrayList<Friend>()
+                        if (querySnapshot != null) {
+                                for ( document in querySnapshot ) {
+                                    val data = document.data
+                                    val name = data.get("name")
+                                    val phoneNumber = data.get("phone_number")
+                                    val myEmail = data.get("user_email")
+
+                                    friends.add(Friend(
+                                        name = name.toString(),
+                                        user_email = myEmail.toString(),
+                                        phone_number = phoneNumber.toString()))
+                                }
+                                println(friends)
+                                friendList.postValue(friends)
+                            }
+                        }
+
+                    // this listen to changes
+                    response.get().addOnFailureListener {
+                        println(it.localizedMessage)
+                        EventBus.getDefault().post(AppEvent(event = "error", message = "An error occurred getting friend list"))
+                    }
+                }
+            } catch (e: Exception) {
+                println(e.localizedMessage)
+            }
+        }
     }
 
 

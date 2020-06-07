@@ -12,9 +12,10 @@ import com.lovisgod.safehaven.Util.Dialog
 import com.lovisgod.safehaven.databinding.ContactItemBinding
 import com.lovisgod.safehaven.databinding.FriendItemBinding
 import com.lovisgod.safehaven.model.Contact
+import com.lovisgod.safehaven.model.Friend
 
 class SafeFriendsListAdapter: RecyclerView.Adapter<SafeFriendsListAdapter.Viewholder>() {
-    private var friendList: ArrayList<Contact> = ArrayList()
+    private var friendList: ArrayList<Friend> = ArrayList()
     val dialog  = Dialog()
 
     class Viewholder(itemView: FriendItemBinding): RecyclerView.ViewHolder(itemView.root) {
@@ -49,7 +50,7 @@ class SafeFriendsListAdapter: RecyclerView.Adapter<SafeFriendsListAdapter.Viewho
         }
     }
 
-    fun setFriendList (friendList: ArrayList<Contact>){
+    fun setFriendList (friendList: ArrayList<Friend>){
         this.friendList = friendList
         notifyDataSetChanged()
     }

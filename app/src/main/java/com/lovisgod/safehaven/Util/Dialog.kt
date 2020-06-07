@@ -16,6 +16,7 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textview.MaterialTextView
 import com.lovisgod.safehaven.R
 import com.lovisgod.safehaven.model.ClosedMDialog
+import com.lovisgod.safehaven.viewmodel.AppViewModel
 import kotlinx.android.synthetic.main.contact_dialog.*
 import org.greenrobot.eventbus.EventBus
 import org.koin.core.qualifier.named
@@ -55,7 +56,7 @@ class Dialog {
 
     @SuppressLint("MissingPermission")
     @RequiresApi(Build.VERSION_CODES.M)
-    fun displayAddContactDialog(context: Context): AlertDialog? {
+    fun displayAddContactDialog(context: Context, viewmodel: AppViewModel): AlertDialog? {
         val builder = AlertDialog.Builder(context)
         var inflater =
             context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
@@ -70,11 +71,10 @@ class Dialog {
 
         saveBtn.setOnClickListener {
             if ( friendName.text.toString().isNotBlank() || friendNumber.text.toString().isNotBlank() ) {
-                println(friendName.text.toString())
-                println(friendNumber.text.toString())
                 Snackbar.make(mView, "Save clicked", Snackbar.LENGTH_LONG)
                     .setBackgroundTint(context.getColor(R.color.colorAccent))
                     .show()
+                viewmodel.saveSafeFriend(name = friendName.text.toString(), phoneNumber = friendNumber.text.toString())
             }
 
         }

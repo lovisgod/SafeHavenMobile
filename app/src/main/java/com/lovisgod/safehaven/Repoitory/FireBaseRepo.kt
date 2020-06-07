@@ -7,7 +7,9 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.SetOptions
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.lovisgod.safehaven.model.AppEvent
 import com.lovisgod.safehaven.model.Users
+import org.greenrobot.eventbus.EventBus
 
 
 class FireBaseRepo() {
@@ -28,5 +30,19 @@ class FireBaseRepo() {
            .addOnFailureListener { e -> println(e.localizedMessage) }
            .addOnSuccessListener { println("success success") }
    }
+
+   fun saveFriendDetails(name:String, phoneNumber: String, userEmail: String) {
+       val friend = Users.friendMap(name = name, phone_number = phoneNumber, user_email = userEmail)
+       db.collection("Friends").add(friend)
+           .addOnFailureListener {
+               EventBus.getDefault().post(AppEvent(event = "error", message = "An error occurred"))
+           }
+           .addOnSuccessListener { EventBus.getDefault().post(AppEvent(event = "success", message = "Friend added successfully")) }
+   }
+
+
+   fun getSafeFriendList(email: String) = db.collection("Friends")
+       .whereEqualTo("user_email", email)
+
 
 }

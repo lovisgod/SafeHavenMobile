@@ -10,10 +10,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.snackbar.Snackbar
 
 import com.lovisgod.safehaven.R
 import com.lovisgod.safehaven.Util.Dialog
@@ -82,11 +84,18 @@ class SafeFriendsFragment : Fragment() {
         sampleFriendList.add(contact3)
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            showedDialog = dailog.displayAddContactDialog(this.requireContext())!!
+            showedDialog = dailog.displayAddContactDialog(this.requireContext(), viewModel)!!
         }
 
 
-        adapter.setFriendList(sampleFriendList)
+        viewModel._friendList.observe(viewLifecycleOwner, Observer {
+            if (it.isNotEmpty()) {
+                adapter.setFriendList(it)
+            }
+        })
+//        adapter.setFriendList(sampleFriendList)
+
+//        viewModel.getSafeFriendList()
 
         binding.addFriend.setOnClickListener {
            showedDialog.show()
@@ -100,6 +109,29 @@ class SafeFriendsFragment : Fragment() {
         when(event.event) {
             "close" -> {
                showedDialog.cancel()
+            }
+
+        }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.M)
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    fun onAppEvent(event: AppEvent) {
+        when(event.event) {
+            "error" -> {
+                showedDialog.cancel()
+                dailog.makeSnack(binding.addFriend,
+                    message = event.message,
+                    context = this.requireContext()
+                )
+            }
+
+            "success" -> {
+                showedDialog.cancel()
+                dailog.makeSnack(binding.root,
+                   message = event.message,
+                   context = this.requireContext()
+                )
             }
 
         }
